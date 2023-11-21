@@ -17,7 +17,8 @@ export class App extends Component {
   };
   addContact = newContact => {
     const isContact = this.state.contacts.some(contact =>
-      contact.name.toLowerCase().includes(newContact.name.toLowerCase())
+      contact.name.toLowerCase()
+        === newContact.name.toLowerCase()
     );
     if (isContact) {
       alert(`${newContact.name} alredy in contacts`);
@@ -51,7 +52,6 @@ export class App extends Component {
   componentDidMount() {
     const contacts = localStorage.getItem('contacts');
     const parsedContacts = JSON.parse(contacts);
-    console.log(parsedContacts);
     if (parsedContacts) {
       this.setState({ contacts: parsedContacts });
     }
